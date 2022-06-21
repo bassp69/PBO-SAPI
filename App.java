@@ -1,12 +1,8 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
       
-        ArrayList<serigala> kandangserigala = new ArrayList<>();
         int indexsapi = 0;
         int arr = 0;
         boolean val;

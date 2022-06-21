@@ -16,9 +16,9 @@ public class looping {
         jumlahsapi();
         jumlahserigala();
         for (int i = 0; i <= time; i++) {
-
             System.out.println("====== tahun ke " + i + " =======");
             puterinsapi();
+            puterinserigalanya();
             disp();
         }
     }
@@ -113,10 +113,24 @@ public class looping {
 
     public void puterinserigalanya() {
         int totalsem = totalserigala;
-        for (int i = 1; i < totalsem; i++) {
+        for (int i = 1; i <= totalsem; i++) {
             if (kandangserigala[i].getLive()== true) {
                 kandangserigala[i].matiSerigala();
                 if (kandangserigala[i].getLive()==true) {
+                    kandangserigala[i].TambahUsiaSerigala();
+
+                    if (kandangserigala[i].serigalaSubur()== true) {
+                        for (int j = 0; j < 2; j++) {
+                            totalserigala++;
+                            jumlahsapibetina++;
+                            kandangserigala[totalserigala] = new serigala(true, totalserigala, kandangserigala[j].getNourut());
+                        }
+                        for (int j = 0; j < 2; j++) {
+                            totalserigala++;
+                            jumlahsapijantan++;
+                            kandangserigala[totalserigala] = new serigala(false, totalserigala, kandangserigala[j].getNourut());
+                        }
+                    } 
                     
                 } else {
                     if (kandangserigala[i].getjkboolean()==true) {
