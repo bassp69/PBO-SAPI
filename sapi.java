@@ -1,19 +1,53 @@
+import java.util.Random;
+
 public class sapi {
     private int usiaSapi, nourut;
-    private boolean subur;
-    boolean live, jkSapi;
+   private boolean live, jkSapi, subur;
+  
+  
+public boolean getLive() {
+    return this.live;
+}
+   
+    public int getUsiaSapi() {
+        return usiaSapi;
+    }
 
+    public boolean getjkboolean() {
+        return this.jkSapi;
+    }
+
+public String getJkString() {
+    if (jkSapi== true) {
+        return " betina ";
+    } else {
+        return " jantan ";
+    }
+}
+    public sapi(int nourut, boolean jkSapi, int induk) {
+        this.usiaSapi = 0;
+        this.jkSapi = jkSapi;
+        this.live = true;
+        this.nourut = nourut;
+        if (jkSapi == true) {
+            System.out.println("sapi " + nourut + " betina telah lahir dari induk "+ induk);
+
+        } else {
+            System.out.println("sapi " + nourut + " jantan telah lahir dari induk "+ induk);
+
+        }
+    }
     public sapi(int nourut, boolean jkSapi) {
         this.usiaSapi = 0;
         this.jkSapi = jkSapi;
         this.live = true;
         this.nourut = nourut;
-        if (jkSapi== true ) {
-            System.out.println("sapi " + nourut +  " betina telah lahir");
-            
+        if (jkSapi == true) {
+            System.out.println("sapi " + nourut + " betina ");
+
         } else {
-            System.out.println("sapi " + nourut +  " jantan telah lahir");
-            
+            System.out.println("sapi " + nourut + " jantan");
+
         }
     }
 
@@ -21,36 +55,39 @@ public class sapi {
         return nourut;
     }
 
-    public boolean MatiUsia() {
+    public void MatiUsia() {
 
-        if (usiaSapi > 6) {
-            return true;
+        if (this.usiaSapi > 6) {
+            System.out.println("sapi "+ getNourut() + getJkString()+ "telah meninggal") ;
+            live= false;
         } else {
-            return false;
+            live= true;
         }
 
     }
 
-    public void matiSerigala() {
-
+ 
+    public boolean matiSerigala() {
+        return false;
     }
 
     public boolean getSubur() {
         subur = false;
-        if (jkSapi == true){
+        if (jkSapi == true) {
 
             if (usiaSapi >= 2 && usiaSapi < 7) {
                 subur = true;
-           
+
             } else {
                 subur = false;
-           
+
             }
-        }return subur;
+        }
+        return subur;
     }
 
     public void TambahUsia() {
-        usiaSapi += 1;
+        usiaSapi ++;
     }
 
     public int getUsia() {
