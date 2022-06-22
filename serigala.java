@@ -2,8 +2,6 @@ public class serigala {
     private int usiaSerigala, nourut, induk;
     private boolean live, jkserigala, subur;
 
-
-
     public serigala(boolean jkserigala, int nourut) {
         this.subur = false;
         this.nourut = nourut;
@@ -18,16 +16,16 @@ public class serigala {
 
         }
     }
-    public serigala(boolean jkserigala, int nourut,int iniduk) {
+
+    public serigala(boolean jkserigala, int nourut, int iniduk) {
         this.subur = false;
         this.nourut = nourut;
         this.jkserigala = jkserigala;
         this.live = true;
         this.induk = iniduk;
         this.usiaSerigala = 0;
-        System.out.println("serigala " + this.nourut + getjkString() +" telah lahir dari induk "+ induk);
+        System.out.println("serigala " + this.nourut + getjkString() + " telah lahir dari induk " + induk);
 
-   
     }
 
     public boolean getLive() {
@@ -47,10 +45,10 @@ public class serigala {
     }
 
     public String getjkString() {
-        if (this.jkserigala== true)
-        return " betina ";
+        if (this.jkserigala == true)
+            return " betina ";
         else
-        return " jantan ";
+            return " jantan ";
     }
 
     public void TambahUsiaSerigala() {
@@ -58,18 +56,18 @@ public class serigala {
     }
 
     public boolean serigalaSubur() {
-        if(this.jkserigala == true){
-            if (this.usiaSerigala >=1 ) {
-           this.subur = true;
-                }
+        if (this.jkserigala == true) {
+            if (this.usiaSerigala >= 1) {
+                this.subur = true;
             }
-            return this.subur;
         }
+        return this.subur;
+    }
 
-        public void matiSerigala() {
-            if(this.usiaSerigala > 3){
-                System.out.println("serigala "+ getNourut() + getjkString()+ " telah meninggal") ;
+    public void matiSerigala() {
+        if (this.usiaSerigala > 3) {
+            System.out.println("serigala " + getNourut() + getjkString() + " telah meninggal");
             this.live = false;
-            }
         }
+    }
 }

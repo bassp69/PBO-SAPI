@@ -87,8 +87,9 @@ public class sapi {
             }
         }
     }
+
     public void probmati6() {
-        if (this.usiaSapi ==6 ) {
+        if (this.usiaSapi == 6) {
             boolean temp = new Random().nextInt(100) < 20;
             this.live = temp;
             if (this.live = false) {

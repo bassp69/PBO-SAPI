@@ -74,7 +74,7 @@ public class looping {
         int totalsem = totalsapi;
         for (int j = 1; j <= totalsem; j++) {
             if (kandangsapi[j].getLive() == true) {
-               
+
                 kandangsapi[j].probmati123();
                 if (kandangsapi[j].getLive() == true) {
                     kandangsapi[j].probmati45();
