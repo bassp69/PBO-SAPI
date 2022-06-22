@@ -117,20 +117,20 @@ public class looping {
             if (kandangserigala[i].getLive()== true) {
                 kandangserigala[i].matiSerigala();
                 if (kandangserigala[i].getLive()==true) {
-                    kandangserigala[i].TambahUsiaSerigala();
-
+                    
                     if (kandangserigala[i].serigalaSubur()== true) {
                         for (int j = 0; j < 2; j++) {
                             totalserigala++;
-                            jumlahsapibetina++;
-                            kandangserigala[totalserigala] = new serigala(true, totalserigala, kandangserigala[j].getNourut());
+                            jumlahserigalabetina++;
+                            kandangserigala[totalserigala] = new serigala(true, totalserigala);
                         }
                         for (int j = 0; j < 2; j++) {
                             totalserigala++;
-                            jumlahsapijantan++;
-                            kandangserigala[totalserigala] = new serigala(false, totalserigala, kandangserigala[j].getNourut());
+                            jumlahserigalajantan++;
+                            kandangserigala[totalserigala] = new serigala(false, totalserigala);
                         }
                     } 
+                    kandangserigala[i].TambahUsiaSerigala();
                     
                 } else {
                     if (kandangserigala[i].getjkboolean()==true) {
