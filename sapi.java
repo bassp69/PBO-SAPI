@@ -1,4 +1,3 @@
-import java.util.Random;
 
 public class sapi {
     private int usiaSapi, nourut;
@@ -67,31 +66,13 @@ public class sapi {
 
     }
 
-    public void probmati123() {
-        if (this.usiaSapi > 0 && this.usiaSapi < 4) {
-            boolean temp = new Random().nextInt(100) > 7;
-           
-            if (temp = true) {
-                this.live=true;
-            }else{
-                System.out.println("sapi " + getNourut() + getJkString() + "telah meninggal di usia " + getUsia());
-                this.live=false;
 
-            }
-
-        }
-    }
     
     public void setmati() {
         this.live = false;
     }
     
   
-
-    public boolean matiSerigala() {
-        return false;
-    }
-
     public boolean getSubur() {
         subur = false;
         if (jkSapi == true) {

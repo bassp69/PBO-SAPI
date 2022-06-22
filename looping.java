@@ -13,15 +13,63 @@ public class looping {
         System.out.println("masukkan tahun = ");
         int time = iScanner.nextInt();
         jumlahsapi();
-        // jumlahserigala();
+        jumlahserigala();
         for (int i = 0; i <= time; i++) {
             System.out.println("====== tahun ke " + i + " =======");
             puterinsapi();
             probmati();
             puterinserigalanya();
+            if (i>0) {
+                
+                serigalaMakanSapi();
+            }
             disp();
         }
     }
+
+    private void serigalaMakanSapi() {
+        int usia0sapi= 0,usiadewasaserigala = 0;;
+    for (int i = 1; i <= totalsapi; i++) {
+        if (kandangsapi[i].getUsia()==0) {
+            usia0sapi++;
+        }
+    }
+    for (int i = 1; i <= totalserigala; i++) {
+        if (kandangserigala[i].getUsiaSerigala()!=0) {
+            usiadewasaserigala++;
+        }
+    }
+    
+    int jumlahdimakanserigala = usia0sapi*3;
+    if (jumlahdimakanserigala<usiadewasaserigala) {
+        int selisih = usiadewasaserigala-jumlahdimakanserigala;
+        for (int i = 0; i < selisih; i++) {
+            for (int j = 1; j <= totalserigala; j++) {
+              if(kandangserigala[j].getLive()==true){
+                  if (kandangserigala[j].getUsiaSerigala()>0) {
+                      kandangserigala[j].setmati();
+                      serigalamati(j);
+                      System.out.println("serigala "+kandangserigala[j].getNourut() +kandangserigala[j].getjkString()+ " mati keluwen");
+                      break;
+                  }
+
+              }
+            }
+        }
+    }
+  for (int k = 0; k < jumlahdimakanserigala; k++) {
+    for (int i = 1; i <= totalsapi; i++) {
+        if (kandangsapi[i].getLive()==true) {
+            if (kandangsapi[i].getUsia()==0) {
+                kandangsapi[i].setmati();
+                System.out.println("sapi "+ kandangsapi[i].getNourut()+ kandangsapi[i].getJkString() +" mati di terkam serigala");
+                sapimati(i);
+                break;
+            }
+        } 
+       }
+  }
+}
 
     public void probmati() {
         if (this.usia123sapi>=100) {
@@ -91,6 +139,7 @@ public class looping {
     }
 
     public void disp() {
+        System.out.println("---------------------------");
         System.out.println("jumlah sapi betina = " + jumlahsapibetina);
         System.out.println("jumlah sapi jantan = " + jumlahsapijantan);
         System.out.println("jumlah semua sapi  = " + totalsapi);
@@ -203,5 +252,17 @@ public class looping {
             this.totalsapi--;
 
         }
+    }
+    
+    public void  serigalamati(int j) {
+        if (kandangserigala[j].getjkboolean() == true) {
+            this.jumlahserigalabetina--;
+            this.totalserigala--;
+        } else {
+            this.jumlahserigalajantan--;
+            this.totalserigala--;
+    
+        }
+        
     }
 }

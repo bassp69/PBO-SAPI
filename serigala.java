@@ -70,4 +70,8 @@ public class serigala {
             this.live = false;
         }
     }
+
+    public void setmati() {
+        this.live = false;
+    }
 }
