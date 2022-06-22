@@ -66,12 +66,9 @@ public class sapi {
 
     }
 
-
-    
     public void setmati() {
         this.live = false;
     }
-    
   
     public boolean getSubur() {
         subur = false;
