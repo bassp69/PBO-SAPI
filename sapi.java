@@ -69,34 +69,24 @@ public class sapi {
 
     public void probmati123() {
         if (this.usiaSapi > 0 && this.usiaSapi < 4) {
-            boolean temp = new Random().nextInt(100) < 7;
-            this.live = temp;
-            if (this.live = false) {
+            boolean temp = new Random().nextInt(100) > 7;
+           
+            if (temp = true) {
+                this.live=true;
+            }else{
                 System.out.println("sapi " + getNourut() + getJkString() + "telah meninggal di usia " + getUsia());
+                this.live=false;
+
             }
 
         }
     }
-
-    public void probmati45() {
-        if (this.usiaSapi > 3 && this.usiaSapi < 6) {
-            boolean temp = new Random().nextInt(100) < 15;
-            this.live = temp;
-            if (this.live = false) {
-                System.out.println("sapi " + getNourut() + getJkString() + "telah meninggal di usia " + getUsia());
-            }
-        }
+    
+    public void setmati() {
+        this.live = false;
     }
-
-    public void probmati6() {
-        if (this.usiaSapi == 6) {
-            boolean temp = new Random().nextInt(100) < 20;
-            this.live = temp;
-            if (this.live = false) {
-                System.out.println("sapi " + getNourut() + getJkString() + "telah meninggal di usia " + getUsia());
-            }
-        }
-    }
+    
+  
 
     public boolean matiSerigala() {
         return false;

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class looping {
     int time, jumlahsapibetina = 0, jumlahsapijantan = 0, totalsapi = 0, jumlahserigalabetina = 0,
-            jumlahserigalajantan = 0, totalserigala = 0;
+            jumlahserigalajantan = 0, totalserigala = 0,usia123sapi = 0,usia45sapi= 0 ,usia6 = 0;
     sapi[] kandangsapi = new sapi[99999];
     serigala[] kandangserigala = new serigala[99999];
     Scanner iScanner = new Scanner(System.in);
@@ -13,12 +13,61 @@ public class looping {
         System.out.println("masukkan tahun = ");
         int time = iScanner.nextInt();
         jumlahsapi();
-        jumlahserigala();
+        // jumlahserigala();
         for (int i = 0; i <= time; i++) {
             System.out.println("====== tahun ke " + i + " =======");
             puterinsapi();
+            probmati();
             puterinserigalanya();
             disp();
+        }
+    }
+
+    public void probmati() {
+        if (this.usia123sapi>=100) {
+            for (int i = 0; i < 7; i++) {
+                for (int j = 1; j <= totalsapi; j++) {
+                    if (kandangsapi[j].getLive()==true) {
+                        if (kandangsapi[j].getUsia()>0&& kandangsapi[j].getUsia() <4) {
+                            System.out.println("sapi " + kandangsapi[j].getNourut() + kandangsapi[j].getJkString() + "telah meninggal di usia " + kandangsapi[j].getUsia());
+                            sapimati(j);
+                            kandangsapi[j].setmati();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        if (this.usia45sapi>=100) {
+            
+            for (int i = 0; i < 15; i++) {
+                for (int j = 1; j <= totalsapi; j++) {
+                    if (kandangsapi[j].getLive()==true) {
+                        if (kandangsapi[j].getUsia()>3&&kandangsapi[j].getUsia()<6) {
+                            System.out.println("sapi " + kandangsapi[j].getNourut() + kandangsapi[j].getJkString() + "telah meninggal di usia " + kandangsapi[j].getUsia());
+                            sapimati(j);
+                            kandangsapi[j].setmati();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (this.usia6>=100) {
+            
+            for (int i = 0; i < 20; i++) {
+                for (int j = 1; j <= totalsapi; j++) {
+                    if (kandangsapi[j].getLive()==true) {
+                        if (kandangsapi[j].getUsia()==6) {
+                            System.out.println("sapi " + kandangsapi[j].getNourut() + kandangsapi[j].getJkString() + "telah meninggal di usia " + kandangsapi[j].getUsia());
+                            sapimati(j);
+                            kandangsapi[j].setmati();
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -75,43 +124,35 @@ public class looping {
         for (int j = 1; j <= totalsem; j++) {
             if (kandangsapi[j].getLive() == true) {
 
-                kandangsapi[j].probmati123();
                 if (kandangsapi[j].getLive() == true) {
-                    kandangsapi[j].probmati45();
+
+                    kandangsapi[j].MatiUsia();
                     if (kandangsapi[j].getLive() == true) {
-                        kandangsapi[j].probmati6();
-                        if (kandangsapi[j].getLive() == true) {
-                            kandangsapi[j].MatiUsia();
-                            if (kandangsapi[j].getLive() == true) {
-                                if (kandangsapi[j].getSubur() == true) {
-
-                                    boolean tes = new Random().nextInt(10) <= 6;
-                                    if (tes == true) {
-                                        totalsapi++;
-                                        kandangsapi[totalsapi] = new sapi(totalsapi, true, j);
-                                        jumlahsapibetina++;
-
-                                    } else {
-                                        totalsapi++;
-                                        kandangsapi[totalsapi] = new sapi(totalsapi, false, j);
-                                        jumlahsapijantan++;
-
-                                    }
-                                }
+                        if (kandangsapi[j].getSubur() == true) {
+                            boolean tes = new Random().nextInt(10) <= 6;
+                            if (tes == true) {
+                                totalsapi++;
+                                kandangsapi[totalsapi] = new sapi(totalsapi, true, j);
+                                jumlahsapibetina++;
                             } else {
-                                sapimati(j);
+                                totalsapi++;
+                                kandangsapi[totalsapi] = new sapi(totalsapi, false, j);
+                                jumlahsapijantan++;
                             }
-                        } else {
-                            sapimati(j);
+                        }
+                        kandangsapi[j].TambahUsia();
+                        if (kandangsapi[j].getUsia()<4) {
+                            usia123sapi++;
+                        } else if(kandangsapi[j].getUsia()>3&& kandangsapi[j].getUsia()<6){
+                            usia45sapi++;
+                        }else{
+                            usia6++;
                         }
                     } else {
                         sapimati(j);
                     }
 
-                } else {
-                    sapimati(j);
                 }
-
             }
         }
 
@@ -155,11 +196,11 @@ public class looping {
 
     public void sapimati(int j) {
         if (kandangsapi[j].getjkboolean() == true) {
-            jumlahsapibetina--;
-            totalsapi--;
+            this.jumlahsapibetina--;
+            this.totalsapi--;
         } else {
-            jumlahsapijantan--;
-            totalsapi--;
+            this.jumlahsapijantan--;
+            this.totalsapi--;
 
         }
     }
