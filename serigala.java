@@ -1,5 +1,5 @@
 public class serigala {
-    private int usiaSerigala, nourut;
+    private int usiaSerigala, nourut, induk;
     private boolean live, jkserigala, subur;
 
 
@@ -17,6 +17,17 @@ public class serigala {
             System.out.println("serigala " + this.nourut + " jantan telah lahir ");
 
         }
+    }
+    public serigala(boolean jkserigala, int nourut,int iniduk) {
+        this.subur = false;
+        this.nourut = nourut;
+        this.jkserigala = jkserigala;
+        this.live = true;
+        this.induk = iniduk;
+        this.usiaSerigala = 0;
+        System.out.println("serigala " + this.nourut + getjkString() +" telah lahir dari induk "+ induk);
+
+   
     }
 
     public boolean getLive() {
