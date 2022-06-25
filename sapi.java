@@ -1,7 +1,7 @@
 
 public class sapi {
-    private int usiaSapi, nourut;
-    private boolean live, jkSapi, subur;
+    private int usiaSapi, nourut, jatahserigala = 3;
+    private boolean live, jkSapi, subur, dahdimaem;
 
     public boolean getLive() {
         return this.live;
@@ -93,4 +93,24 @@ public class sapi {
         return usiaSapi;
     }
 
+    public int getJatahDimakan() {
+        return jatahserigala;
+    }
+
+    public void kurangJatahDimakan() {
+   jatahserigala--;
+    }
+
+    public void ubahdimakan() {
+   dahdimaem = true;
+
+    }
+
+    public boolean getdahdimaem(){
+        return dahdimaem;
+    }
+
+   
+
+   
 }

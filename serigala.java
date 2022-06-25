@@ -1,6 +1,6 @@
 public class serigala {
     private int usiaSerigala, nourut, induk;
-    private boolean live, jkserigala, subur;
+    private boolean live, jkserigala, subur, dahmaem = false;
 
     public serigala(boolean jkserigala, int nourut) {
         this.subur = false;
@@ -65,8 +65,8 @@ public class serigala {
     }
 
     public void matiSerigala() {
-        if (this.usiaSerigala > 3) {
-            System.out.println("serigala " + getNourut() + getjkString() + " telah meninggal");
+        if (this.usiaSerigala >=3) {
+            System.out.println("serigala " + getNourut() + getjkString() + " telah meninggal karena uzur");
             this.live = false;
         }
     }
@@ -74,4 +74,18 @@ public class serigala {
     public void setmati() {
         this.live = false;
     }
+
+    public void makanSapi(int nourut) {
+      if(this.usiaSerigala>0) {
+        System.out.println("serigala "+ getNourut()+ getjkString() +" makan sapi "+ nourut);
+        
+      } 
+    }
+    public void switchDahmaem() {
+        dahmaem = true;
+    }
+    public boolean getdahmaem() {
+        return dahmaem;
+    }
+
 }

@@ -3,7 +3,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class looping {
-            int time,
+    int waktusapi,
+    waktuserigalamasuk,
             jumlahsapibetina = 0,
             jumlahsapijantan = 0,
             totalsapi = 0,
@@ -19,65 +20,62 @@ public class looping {
 
     public looping() {
         System.out.println("masukkan tahun = ");
-        int time = iScanner.nextInt();
+        int waktusapi = iScanner.nextInt();
+    
         jumlahsapi();
         jumlahserigala();
-        for (int i = 0; i <= time; i++) {
+        for (int i = 0; i <= waktusapi; i++) {
             System.out.println("====== tahun ke " + i + " =======");
+         
             puterinsapi();
             probmati();
-            puterinserigalanya();
-            if (i > 0) {
-
+            if (i>=waktuserigalamasuk) {
+                puterinserigalanya();
                 serigalaMakanSapi();
+                
             }
             disp();
         }
     }
 
     private void serigalaMakanSapi() {
-        int usia0sapi = 0, usiadewasaserigala = 0;
-        ;
+
+        for (int j = 1; j <= totalsapi; j++) {
+            if (kandangsapi[j].getLive() && kandangsapi[j].getUsia() == 0) {
+                for (int k = 1; k <= totalserigala; k++) {
+                    if (kandangserigala[k].getLive() && kandangserigala[k].getUsiaSerigala() > 0
+                            && kandangserigala[k].getdahmaem() == false && kandangsapi[j].getJatahDimakan() > 0) {
+                        kandangserigala[k].makanSapi(kandangsapi[j].getNourut());
+                        kandangserigala[k].switchDahmaem();
+                        kandangsapi[j].kurangJatahDimakan();
+                    kandangsapi[j].ubahdimakan();
+                    }
+
+                }
+            }
+        }
+        
         for (int i = 1; i <= totalsapi; i++) {
-            if (kandangsapi[i].getUsia() == 0) {
-                usia0sapi++;
-            }
+            if (kandangsapi[i].getdahdimaem()==true) {
+              kandangsapi[i].setmati();
+                sapimati(i);  
+                
+            } 
         }
-        for (int i = 1; i <= totalserigala; i++) {
-            if (kandangserigala[i].getUsiaSerigala() != 0) {
-                usiadewasaserigala++;
-            }
-        }
+int totalsem = totalserigala;
+        for (int j = 1; j <= totalsem; j++) {
+            if (kandangserigala[j].getLive() && kandangserigala[j].getUsiaSerigala() > 0
+                    && kandangserigala[j].getdahmaem() == false) {
+                kandangserigala[j].setmati();
+                if (kandangserigala[j].getjkboolean()) {
+                    System.out.println("Serigala Betina (" + kandangserigala[j].getNourut() + ") mati kelaparan");
+                } else {
 
-        int jumlahdimakanserigala = usia0sapi * 3;
-        if (jumlahdimakanserigala < usiadewasaserigala) {
-            int selisih = usiadewasaserigala - jumlahdimakanserigala;
-            for (int i = 0; i < selisih; i++) {
-                for (int j = 1; j <= totalserigala; j++) {
-                    if (kandangserigala[j].getLive() == true) {
-                        if (kandangserigala[j].getUsiaSerigala() > 0) {
-                            kandangserigala[j].setmati();
-                            serigalamati(j);
-                            System.out.println("serigala " + kandangserigala[j].getNourut()
-                                    + kandangserigala[j].getjkString() + " mati keluwen");
-                            break;
-                        }
+                    System.out.println("Serigala Jantan (" + kandangserigala[j].getNourut() + ") mati kelaparan");
 
-                    }
                 }
-            }
-        }
-        for (int k = 0; k < jumlahdimakanserigala; k++) {
-            for (int i = 1; i <= totalsapi; i++) {
-                if (kandangsapi[i].getLive() == true) {
-                    if (kandangsapi[i].getUsia() == 0) {
-                        kandangsapi[i].setmati();
-                        System.out.println("sapi " + kandangsapi[i].getNourut() + kandangsapi[i].getJkString()
-                                + " mati di terkam serigala");
-                        sapimati(i);
-                        break;
-                    }
-                }
+
+                serigalamati(j);
             }
         }
     }
@@ -165,6 +163,10 @@ public class looping {
 
     public void jumlahserigala() {
 
+        
+        System.out.println("masukkan waktu serigala masuk = ");
+        waktuserigalamasuk = iScanner.nextInt();
+        
         System.out.println("masukkan serigala jantan = ");
         int temp = iScanner.nextInt();
         for (int j = 1; j <= temp; j++) {
@@ -183,7 +185,9 @@ public class looping {
     }
 
     public void puterinsapi() {
+
         int totalsem = totalsapi;
+
         for (int j = 1; j <= totalsem; j++) {
             if (kandangsapi[j].getLive() == true) {
 
@@ -203,7 +207,7 @@ public class looping {
                                 jumlahsapijantan++;
                             }
                         }
-                        kandangsapi[j].TambahUsia();
+                  
                         if (kandangsapi[j].getUsia() < 4) {
                             usia123sapi++;
                         } else if (kandangsapi[j].getUsia() > 3 && kandangsapi[j].getUsia() < 6) {
@@ -218,16 +222,21 @@ public class looping {
                 }
             }
         }
+        for (int i = 1; i <= totalsem; i++) {
+            if (kandangsapi[i].getLive()){
 
+                kandangsapi[i].TambahUsia();
+            }
+        }
     }
-
+    
     public void puterinserigalanya() {
         int totalsem = totalserigala;
         for (int i = 1; i <= totalsem; i++) {
             if (kandangserigala[i].getLive() == true) {
                 kandangserigala[i].matiSerigala();
                 if (kandangserigala[i].getLive() == true) {
-
+                    
                     if (kandangserigala[i].serigalaSubur() == true) {
                         for (int j = 0; j < 2; j++) {
                             totalserigala++;
@@ -240,22 +249,23 @@ public class looping {
                             kandangserigala[totalserigala] = new serigala(false, totalserigala, i);
                         }
                     }
-                    kandangserigala[i].TambahUsiaSerigala();
-
+                   
+                    
                 } else {
-                    if (kandangserigala[i].getjkboolean() == true) {
-                        jumlahserigalabetina--;
-                        totalserigala--;
-                    } else {
-                        jumlahserigalajantan--;
-                        totalserigala--;
-                    }
+                    serigalamati(i); 
                 }
-
             }
+            
         }
+        for (int i = 1; i <= totalsem; i++) {
+           if (kandangserigala[i].getLive()){
 
+               kandangserigala[i].TambahUsiaSerigala();
+           }
+        }
     }
+
+    
 
     public void sapimati(int j) {
         if (kandangsapi[j].getjkboolean() == true) {
